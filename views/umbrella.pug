@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1= title
+  -let results=[{color:"pink",cost:18,size:"small"},{color:"green",cost:20,size:"medium"},{color:"yellow",cost:19,size:"large"}]
+    
+    div(class="container-fluid")
+    div(class="row")
+        each item,index in results
+            div(class="col-sm-2" onclick=`buy(${index})`)
+                p Color:  #{item.color} 
+                p Cost: #{item.cost}
+                p Size: #{item.size}
+    script.
+      function buy(index)
+      {
+        alert(`You purchased item ${index+1}.`)
+      }
