@@ -30,3 +30,16 @@ exports.umbrella_delete = function(req, res) {
 exports.umbrella_update_put = function(req, res) {
  res.send('NOT IMPLEMENTED: umbrella update PUT' + req.params.id);
 };
+
+// VIEWS
+// Handle a show all view
+exports.umbrella_view_all_Page = async function(req, res) {
+    try{
+    theumbrella = await umbrella.find();
+    res.render('umbrella', { title: 'umbrella Search Results', results: theumbrella });
+    }
+    catch(err){
+    res.status(500);
+    res.send(`{"error": ${err}}`);
+    }
+   };
