@@ -1,8 +1,19 @@
 var umbrella = require('../models/umbrella');
 // List of all umbrella
-exports.umbrella_list = function(req, res) {
+// List of all umbrella
+exports.umbrella_list = async function(req, res) {
+    try{
+    theumbrella = await umbrella.find();
+    res.send(theumbrella);
+    }
+    catch(err){
+    res.status(500);
+    res.send(`{"error": ${err}}`);
+    }
+   };
+/*exports.umbrella_list = function(req, res) {
  res.send('NOT IMPLEMENTED: umbrella list');
-};
+};*/
 // for a specific umbrella.
 exports.umbrella_detail = function(req, res) {
  res.send('NOT IMPLEMENTED: umbrella detail: ' + req.params.id);
