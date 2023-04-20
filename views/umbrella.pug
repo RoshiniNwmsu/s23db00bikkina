@@ -8,7 +8,7 @@ block content
     div(class="row")
         each item,index in results
             div(class="col-sm-2" onclick=`buy(${index})`)
-                p color:  #{item.color} 
+                p color:#{item.color} 
                 p cost: #{item.cost}
                 p size: #{item.size}
     script.
