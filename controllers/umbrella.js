@@ -58,13 +58,25 @@ exports.umbrella_detail = async function(req, res) {
  res.send('NOT IMPLEMENTED: umbrella create POST');
 };*/
 // Handle umbrella delete form on DELETE.
-exports.umbrella_delete = function(req, res) {
+/*exports.umbrella_delete = function(req, res) {
  res.send('NOT IMPLEMENTED: umbrella delete DELETE ' + req.params.id);
-};
+};*/
 // Handle umbrella update form on PUT.
 /*exports.umbrella_update_put = function(req, res) {
  res.send('NOT IMPLEMENTED: umbrella update PUT' + req.params.id);
 };*/
+// Handle umbrella delete on DELETE.
+exports.umbrella_delete = async function(req, res) {
+    console.log("delete " + req.params.id)
+    try {
+    result = await umbrella.findByIdAndDelete( req.params.id)
+    console.log("Removed " + result)
+    res.send(result)
+    } catch (err) {
+    res.status(500)
+    res.send(`{"error": Error deleting ${err}}`);
+    }
+   };
 
 //Handle umbrella update form on PUT.
 exports.umbrella_update_put = async function(req, res) {
