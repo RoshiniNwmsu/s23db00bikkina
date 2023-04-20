@@ -62,8 +62,28 @@ exports.umbrella_delete = function(req, res) {
  res.send('NOT IMPLEMENTED: umbrella delete DELETE ' + req.params.id);
 };
 // Handle umbrella update form on PUT.
-exports.umbrella_update_put = function(req, res) {
+/*exports.umbrella_update_put = function(req, res) {
  res.send('NOT IMPLEMENTED: umbrella update PUT' + req.params.id);
+};*/
+
+//Handle umbrella update form on PUT.
+exports.umbrella_update_put = async function(req, res) {
+console.log(`update on id ${req.params.id} with body
+${JSON.stringify(req.body)}`)
+try {
+let toUpdate = await umbrella.findById( req.params.id)
+// Do updates of properties
+if(req.body.color) toUpdate.color = req.body.color;
+if(req.body.cost) toUpdate.cost = req.body.cost;
+if(req.body.size) toUpdate.size = req.body.size;
+let result = await toUpdate.save();
+console.log("Sucess " + result)
+res.send(result)
+} catch (err) {
+res.status(500)
+res.send(`{"error": ${err}: Update for id ${req.params.id}
+failed`);
+}
 };
 
 // VIEWS
