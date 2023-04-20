@@ -136,3 +136,17 @@ exports.umbrella_create_Page = function(req, res) {
     res.send(`{'error': '${err}'}`);
     }
    };
+   // Handle building the view for updating a umbrella.
+// query provides the id
+exports.umbrella_update_Page = async function(req, res) {
+console.log("update view for item "+req.query.id)
+try{
+let result = await umbrella.findById(req.query.id)
+res.render('umbrellaupdate', { title: 'umbrella Update', toShow: result });
+}
+catch(err){
+res.status(500)
+res.send(`{'error': '${err}'}`);
+}
+};
+
