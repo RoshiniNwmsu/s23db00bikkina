@@ -149,4 +149,18 @@ res.status(500)
 res.send(`{'error': '${err}'}`);
 }
 };
+//Handle a delete one view with id from query
+exports.umbrella_delete_Page = async function(req, res) {
+console.log("Delete view for id " + req.query.id)
+try{
+result = await umbrella.findById(req.query.id)
+res.render('umbrelladelete', { title: 'umbrella Delete', toShow:
+result });
+}
+catch(err){
+res.status(500)
+res.send(`{'error': '${err}'}`);
+}
+};
+
 

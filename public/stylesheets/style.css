@@ -1,12 +1,12 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding: 100px;
+  font: 19px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
-  color: #00B7FF;
+  color: #0f1315;
 }
 .umbrellaAttr {
-  background-color: aquamarine;
+  background-color: rgb(200, 255, 127);
   width: 120px;
 }
