@@ -5,14 +5,21 @@ block content
   -var results=[{color:"pink",cost:18,size:"small"},{color:"green",cost:20,size:"medium"},{color:"yellow",cost:19,size:"large"}]
     
     div(class="container-fluid")
-    div(class="row")
+    div(class="row m-1")
         each item,index in results
+         -let destination = `dispatch(\"/umbrella/update?id=${item._id}\")`
             div(class="col-sm-2" onclick=`buy(${index})`)
+
                 p color:#{item.color} 
                 p cost: #{item.cost}
                 p size: #{item.size}
+                button.btn( class="btn-primary ml-1", onclick= destination) Update
     script.
       function buy(index)
       {
         alert(`You purchased item ${index+1}.`)
       }
+      function dispatch(path){
+        window.location.href=path
+      }
+
