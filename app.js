@@ -54,6 +54,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+app.use(require('express-session')({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: false
+  }));
+  app.use(passport.initialize());
+  app.use(passport.session());
+
+
 // passport config
 // Use the existing connection
 // The Account model
@@ -99,13 +108,6 @@ umbrella({color:"yellow",cost:19,size:"large"});
 let reseed = true;
 if (reseed) {recreateDB();}
 
-app.use(require('express-session')({
-  secret: 'keyboard cat',
-  resave: false,
-  saveUninitialized: false
-  }));
-  app.use(passport.initialize());
-  app.use(passport.session());
 
 
 // catch 404 and forward to error handler
